@@ -67,7 +67,8 @@ Select * from Members where Address is Null
 Select * from Borrowings where Borrow_Date=TO_DATE('2002-05-19','YYYY-MM-DD')
 Select * from Books where Publication_Year>2000
 Select * from Borrowings where Fine=0
-Select * from Members Order By Membership_Date DESCSelect count(Author_ID) as Total_Count from Authors
+Select * from Members Order By Membership_Date DESC
+Select count(Author_ID) as Total_Count from Authors
 Select * from Books where Title Like "%Potter%"
 Select * from Borrowings where Return_Date=TO_DATE('2002-05-19','YYYY-MM-DD')
 Select * from Members where Phone Like "111%"
