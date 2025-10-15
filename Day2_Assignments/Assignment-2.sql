@@ -48,7 +48,7 @@ INSERT INTO OrderDetails (ODID, Order_ID, Product_ID, Quantity) VALUES (51, 012,
 --Retrieve Data--
 SELECT * FROM Products WHERE Quantity<20 ;
 SELECT Cust_ID, Total FROM Orders ;
-UPDATE Products p JOIN OrderDetails od ON p.PID = od.Product_ID SET p.Quantity=p.Quantity-od.Quantity 
+UPDATE Products p JOIN OrderDetails od ON p.PID = od.Product_ID SET p.Quantity=p.Quantity-od.Quantity;
 
 
 
