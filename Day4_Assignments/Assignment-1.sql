@@ -1,0 +1,9 @@
+DECLARE
+  P NUMBER := 10000;
+  R NUMBER := 6;
+  T NUMBER := 2;
+  SI NUMBER;
+BEGIN 
+  SI := (P*R*T)/100 ;
+  DBMS_OUTPUT.PUT_LINE('SI = ' || SI);
+END;
