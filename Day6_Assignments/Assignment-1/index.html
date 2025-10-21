@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Credit Card Payment</title>
+</head>
+<body>
+  <h2>Credit Card Payment</h2>
+  <p>
+    <strong>This is a secure 128-bit SSL Encrypted payment. You're safe.</strong>
+  </p>
+  <form method="post" action="#">
+    <!-- Payment Methods -->
+    <fieldset>
+      <legend>Payment Method</legend>
+      <label>
+        <input type="radio" name="method" value="card" checked>
+        Credit Card (Visa, Mastercard)
+      </label>
+      <br><br>
+      <label>
+        <input type="radio" name="method" value="paypal">
+        PayPal
+      </label>
+    </fieldset>
+    <br>
+
+    <!-- Card Number -->
+    <label for="cardnumber"><strong>Card number</strong></label><br>
+    <small>The 16 digits on front of your card</small><br>
+    <input id="cardnumber" name="cardnumber" type="tel" maxlength="19" required autocomplete="cc-number">
+    <br><br>
+
+    <!-- Expiration and CVV -->
+    <table>
+      <tr>
+        <td>
+          <label for="expmonth"><strong>Expiration Month</strong></label><br>
+          <select id="expmonth" name="expmonth" required autocomplete="cc-exp-month">
+            <option value="">Month</option>
+            <option value="01">01</option><option value="02">02</option><option value="03">03</option>
+            <option value="04">04</option><option value="05">05</option><option value="06">06</option>
+            <option value="07">07</option><option value="08">08</option><option value="09">09</option>
+            <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+          </select>
+        </td>
+        <td style="width:20px;"></td>
+        <td>
+          <label for="expyear"><strong>Expiration Year</strong></label><br>
+          <select id="expyear" name="expyear" required autocomplete="cc-exp-year">
+            <option value="">Year</option>
+            <option>2025</option><option>2026</option><option>2027</option><option>2028</option><option>2029</option>
+            <option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option>
+          </select>
+        </td>
+        <td style="width:20px;"></td>
+        <td>
+          <label for="cvv"><strong>CVV2/CVC2</strong></label><br>
+          <input id="cvv" name="cvv" type="tel" maxlength="4" required autocomplete="cc-csc"><br>
+          <small>The last 3 digits on the back of your card</small>
+        </td>
+      </tr>
+    </table>
+    <br>
+
+    <!-- Name on Card -->
+    <label for="fullname"><strong>Full Name on Card</strong></label><br>
+    <input id="fullname" name="fullname" type="text" required autocomplete="cc-name">
+    <br><br>
+
+    <!-- Amount and Submit -->
+    <p><strong>You will be charged $29.00 every month</strong></p>
+    <button type="submit">Complete Transaction</button>
+  </form>
+</body>
+</html>
