@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator Functions</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { border: 4px solid #7b3fa0; padding: 30px; margin: 40px; width: 500px; }
+        h2 { color: #7b3fa0; }
+        label { font-size: 18px; }
+        input[type="number"], input[type="text"] { font-size: 16px; margin-bottom: 10px; width: 60%; }
+        button { font-size: 16px; margin-top: 10px; }
+        .result { margin: 15px 0 25px 0; font-size: 18px; color: #333; }
+        hr { margin: 30px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Find Average</h2>
+        <label>Total Marks: <input type="number" id="totalMarks" /></label><br>
+        <label>No. of Subjects: <input type="number" id="numSubjects" /></label><br>
+        <button onclick="handleAverage()">Get Average</button>
+        <div class="result" id="avgResult"></div>
+        <hr>
+
+        <h2>Find Power Value (x<sup>y</sup>)</h2>
+        <label>X: <input type="number" id="xValue" /></label><br>
+        <label>Y: <input type="number" id="yValue" /></label><br>
+        <button onclick="handlePower()">Get Power</button>
+        <div class="result" id="powerResult"></div>
+        <hr>
+
+        <h2>Count Words in String</h2>
+        <label>Enter String: <input type="text" id="inputString" /></label><br>
+        <button onclick="handleWordCount()">Count Words</button>
+        <div class="result" id="wordResult"></div>
+    </div>
+
+    <script>
+        // a. Average calculation
+        function findAverage(total, subjects) {
+            if (subjects === 0) return 0;
+            return total / subjects;
+        }
+        function handleAverage() {
+            const total = parseFloat(document.getElementById('totalMarks').value);
+            const subjects = parseInt(document.getElementById('numSubjects').value);
+            if (isNaN(total) || isNaN(subjects) || subjects <= 0) {
+                document.getElementById('avgResult').innerText = "Please enter valid values.";
+                return;
+            }
+            const avg = findAverage(total, subjects);
+            document.getElementById('avgResult').innerText = "Average: " + avg.toFixed(2);
+        }
+
+        // b. Power calculation
+        function findPower(x, y) {
+            return Math.pow(x, y);
+        }
+        function handlePower() {
+            const x = parseFloat(document.getElementById('xValue').value);
+            const y = parseFloat(document.getElementById('yValue').value);
+            if (isNaN(x) || isNaN(y)) {
+                document.getElementById('powerResult').innerText = "Please enter valid numbers.";
+                return;
+            }
+            const result = findPower(x, y);
+            document.getElementById('powerResult').innerText = `${x} power ${y} = ${result}`;
+        }
+
+        // c. Word count
+        function countWords(str) {
+            if (!str.trim()) return 0;
+            return str.trim().split(/\s+/).length;
+        }
+        function handleWordCount() {
+            const str = document.getElementById('inputString').value;
+            const count = countWords(str);
+            document.getElementById('wordResult').innerText = "Number of words: " + count;
+        }
+    </script>
+</body>
+</html>
