@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meal Price Calculator</title>
+    <style>
+        body {
+            background: #fff;
+        }
+        .container {
+            border: 6px solid #4b7ecf;
+            padding: 30px;
+            margin: 40px;
+            width: 400px;
+            font-size: 20px;
+        }
+        input[type="number"] {
+            width: 60%;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+        button {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label>Meal Base Cost: 
+            <input type="number" id="baseCost" min="0" step="0.01" />
+        </label>
+        <br><br>
+        <button onclick="calculateMeal()">Calculate Total</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        function calculateMeal() {
+            const baseCost = parseFloat(document.getElementById('baseCost').value);
+            if (isNaN(baseCost) || baseCost < 0) {
+                alert("Please enter a valid base cost.");
+                return;
+            }
+            const tip = baseCost * 0.10;
+            const tax = baseCost * 0.08;
+            const total = Math.round(baseCost + tip + tax);
+
+            document.getElementById('result').innerHTML = `
+                Meals Base Cost : ${baseCost.toFixed(2)} <br>
+                Tip Amount : ${tip.toFixed(2)} <br>
+                Tax Amount : ${tax.toFixed(2)} <br>
+                Total Amount : ${total}
+            `;
+        }
+    </script>
+</body>
+</html>
