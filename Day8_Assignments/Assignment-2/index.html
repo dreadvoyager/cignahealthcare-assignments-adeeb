@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Total Calculator</title>
+    <style>
+        body {
+            background: #fff;
+        }
+        .container {
+            border: 10px solid #a442a0;
+            padding: 10px;
+            margin: 30px;
+            width: 650px;
+        }
+        label {
+            font-size: 22px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 60%;
+            font-size: 20px;
+            margin-bottom: 20px;
+            margin-left: 10px;
+        }
+        #getTotalBtn {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        #total {
+            font-size: 28px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label>Product Name : 
+            <input type="text" id="pname" />
+        </label>
+        <br><br>
+        <label>Unit Price : 
+            <input type="number" id="price" />
+        </label>
+        <br><br>
+        <label>Quantity : 
+            <input type="number" id="qty" />
+        </label>
+        <br><br>
+        <button id="getTotalBtn" onclick="getTotal()">Get Total</button>
+        <div id="total"></div>
+    </div>
+    <script>
+        function getTotal() {
+            const pname = document.getElementById('pname').value;
+            const price = parseFloat(document.getElementById('price').value);
+            const qty = parseInt(document.getElementById('qty').value);
+
+            if (!pname || isNaN(price) || isNaN(qty)) {
+                alert("Please enter all product details.");
+                return;
+            }
+
+            if (!confirm("Do you want to calculate the total amount?")) {
+                return;
+            }
+
+            let discount = 0;
+            if (qty > 30) {
+                discount = 0.20;
+            } else if (qty > 20) {
+                discount = 0.15;
+            } else if (qty > 10) {
+                discount = 0.10;
+            }
+
+            let total = price * qty;
+            let discountAmount = total * discount;
+            let finalTotal = total - discountAmount;
+
+            document.getElementById('total').innerHTML = 
+                "Total Amount : " + finalTotal.toFixed(0);
+        }
+    </script>
+</body>
+</html>
