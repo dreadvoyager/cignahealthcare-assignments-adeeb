@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Collection</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        #courseList { margin-top: 20px; }
+        input[type="text"] { margin-right: 10px; }
+        button { margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <h2>Course Collection</h2>
+    <input type="text" id="courseInput" placeholder="Enter course name">
+    <button onclick="showCourses()">Show</button>
+    <button onclick="addCourse()">Add</button>
+    <button onclick="removeCourse()">Remove</button>
+    <ul id="courseList"></ul>
+
+    <script>
+        // Initialize course array
+        let courses = ["Mathematics", "Physics", "Chemistry"];
+
+        // Show available courses in list format
+        function showCourses() {
+            const list = document.getElementById('courseList');
+            list.innerHTML = '';
+            if (courses.length === 0) {
+                list.innerHTML = '<li>No courses available.</li>';
+                return;
+            }
+            courses.forEach(course => {
+                const li = document.createElement('li');
+                li.textContent = course;
+                list.appendChild(li);
+            });
+        }
+
+        // Add new course from textbox
+        function addCourse() {
+            const input = document.getElementById('courseInput');
+            const courseName = input.value.trim();
+            if (courseName === '') {
+                alert('Please enter a course name.');
+                return;
+            }
+            if (courses.includes(courseName)) {
+                alert('Course already exists.');
+                return;
+            }
+            courses.push(courseName);
+            input.value = '';
+            showCourses();
+        }
+
+        // Remove course entered in textbox
+        function removeCourse() {
+            const input = document.getElementById('courseInput');
+            const courseName = input.value.trim();
+            const index = courses.indexOf(courseName);
+            if (index === -1) {
+                alert('Course not found.');
+                return;
+            }
+            courses.splice(index, 1);
+            input.value = '';
+            showCourses();
+        }
+
+       
+    </script>
+</body>
+</html>
