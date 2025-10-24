@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+    <style>
+        table, th, td { border: 1px solid #333; border-collapse: collapse; padding: 8px; }
+        th { background: #eee; }
+    </style>
+</head>
+<body>
+    <h1>Advanced JavaScript - ES6 (Array of Objects)</h1>
+    <hr/>
+
+    <button onclick="button1Click()">Show All</button>
+    <input type="text" id="courseFilter" placeholder="Enter course to filter">
+    <button onclick="filterByCourse()">Filter</button>
+    <hr/>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Student rows will appear here -->
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <footer>
+        <mark>Note: Check the console window to see the result.</mark>    
+    </footer>
+
+    <script> 
+        // Global array so both functions can access it
+        const studentsArray = [
+            {id : 10256, name : "Scott", course : "React"},
+            {id : 10257, name : "Scott", course : "Angular"},
+            {id : 10258, name : "Scott", course : "Vue"},
+            {id : 10259, name : "Scott", course : "Node"},
+            {id : 10260, name : "Scott", course : "Express"},
+        ];
+
+        function renderTable(data) {
+            let tbody = document.getElementById("studentTable").getElementsByTagName('tbody')[0];
+            let str = "";
+            for(let item of data) {
+                str += `<tr>
+                            <td>${item.id}</td>
+                            <td>${item.name}</td>
+                            <td>${item.course}</td>
+                        </tr>`;
+            }
+            tbody.innerHTML = str || `<tr><td colspan="3">No records found.</td></tr>`;
+        }
+
+        function button1Click(){ 
+            renderTable(studentsArray);
+        }
+
+        function filterByCourse() {
+            const filterValue = document.getElementById('courseFilter').value.trim();
+            const filtered = studentsArray.filter(s => s.course.toLowerCase() === filterValue.toLowerCase());
+            renderTable(filtered);
+        }
+
+    </script>
+</body>
+</html>
