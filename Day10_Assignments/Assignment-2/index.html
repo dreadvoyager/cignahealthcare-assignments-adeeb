@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Employee Table - Alternate Row Styling</title>
+</head>
+<body>
+    <h3>Employee Data Table</h3>
+    <table id="empTable" border="5" cellpadding="10" style="border-collapse:collapse;">
+        <tr>
+            <th>Emp ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+        <tr>
+            <td>101</td>
+            <td>Alice</td>
+            <td>HR</td>
+        </tr>
+        <tr>
+            <td>102</td>
+            <td>Bob</td>
+            <td>Finance</td>
+        </tr>
+        <tr>
+            <td>103</td>
+            <td>Charlie</td>
+            <td>IT</td>
+        </tr>
+        <tr>
+            <td>104</td>
+            <td>Diana</td>
+            <td>Marketing</td>
+        </tr>
+        <tr>
+            <td>105</td>
+            <td>Edward</td>
+            <td>Sales</td>
+        </tr>
+    </table>
+    <br>
+    <button id="styleBtn">Apply Styles</button>
+
+    <script>
+        document.getElementById("styleBtn").addEventListener("click", function() {
+            var table = document.getElementById("empTable");
+            var rows = table.getElementsByTagName("tr");
+            
+            for (var i = 1; i < rows.length; i++) {
+                if (i % 2 === 0) {
+                    rows[i].style.backgroundColor = "beige";
+                } else {
+                    rows[i].style.backgroundColor = "grey"; 
+                }
+            }
+        });
+    </script>
+</body>
+</html>
